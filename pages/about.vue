@@ -1,35 +1,40 @@
-
-<i18n src="./about_en.json"></i18n>
-<i18n src="./about_ru.json"></i18n>
-
 <template>
-  <div>
-    {{t('About')}}
-    <button @click="locale='ru'">ru</button>
-    <button @click="locale='en'">en</button>
-    <div>
-      {{ data }}
-      <button :disabled="pending" @click="refresh">
-        Refrash Data
-      </button>
-    </div>
-  </div>
+<div id="home">
+  <h2 class="description">This is the about page</h2>
+  <ThreejsPlane />
+</div>
 </template>
 
+<style lang="less">
+#home {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  .description {
+    font-size: x-large;
+    color: white;
+  }
+}
+</style>
+
 <script lang="ts">
+import { onMounted } from 'vue'
 export default {
   head: {
-    title: 'Static title'
+    title: 'About title'
   }
 }
 </script>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
-const { t, locale } = useI18n()
+useMeta({
+  meta: [
+    { name: 'description', content: 'About description' }
+  ],
+})
 
-const { data, refresh, pending } = await useAsyncData('/api/hello', () => $fetch('/api/helloworld'))
-// TODO: check why doesn't work this:
-// const { data, refresh, pending } = await useFetch('/api/hello')
-// const { data: mountain } = await useFetch('/api/mountains/everest', { pick: ['title', 'description'] })
+onMounted(() => {
+  const { camera } = useWebGL()
+  camera.position.z = 1
+})
 </script>

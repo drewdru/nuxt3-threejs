@@ -1,28 +1,34 @@
 <template>
-  <div class="nav-bar">
-    <NuxtLink to="/">
-      Home
-    </NuxtLink>
-    <NuxtLink to="/game">
-      Game
-    </NuxtLink>
-    <NuxtLink to="/about">
-      About
-    </NuxtLink>
-    <NuxtLink to="/parent">
-      Parent (index)
-    </NuxtLink>
-    <NuxtLink to="/parent/b">
-      Parent (b)
-    </NuxtLink>
-    <NuxtLink to="/catchall/test/id/1">
-      Test catchall
-    </NuxtLink>
-  </div>
+	<header>
+		<nav>
+			<ul>
+				<li>
+					<NuxtLink to="/">Home Page</NuxtLink>
+				</li>
+				<li>
+					<NuxtLink to="about">About Page</NuxtLink>
+				</li>
+			</ul>
+		</nav>
+	</header>
 </template>
 
 <style lang="less">
-.nav-bar {
-  background-color: red;
+header {
+	position: fixed;
+	top: 0;
+	padding: 1rem;
+	width: 100%;
+	z-index: 999;
+	box-sizing: border-box;
+	ul {
+		color: white;
+		display: flex;
+		justify-content: flex-end;
+		list-style: none;
+		li {
+			margin-left: 1rem;
+		}
+	}
 }
 </style>
